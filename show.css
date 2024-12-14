@@ -1,0 +1,67 @@
+.show{
+    display: flex;
+    flex-direction: row;
+}
+.show-right {
+    padding: 0px 20px;
+    font-size: 24px;
+  }
+  
+  
+  .genres {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+  
+  
+  .genre {
+    padding: 5px 25px;
+    height: fit-content;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: #2b2b2b;
+    text-align: center;
+    box-shadow: 2px 2px 2px gray;
+    color: white;
+  }
+  
+  
+  #episodes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  
+  .episode {
+    display: flex;
+    width: 850px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+  }
+  
+  
+  .episode-data {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  
+  .episode-title-div {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  .episode-title-div h3 {
+    margin: 0px;
+  }
+  
+  
+  .episode-rate {
+    display: flex;
+    gap: 12px;
+  }
+ 

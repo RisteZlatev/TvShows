@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    
+    <div class="login-box">
+        <h1 class="head">Login</h1>
+        <div class="name-container">
+        <input id="nameInput" class="text-input" type="text" placeholder="Name">
+        <br>
+        <span id="nameInputError">Please use only alphabetic characters for your name</span>
+         </div>
+        <div class="email-container">
+        <input id="emailInput" class="text-input" type="email" placeholder="Email">
+        <br>
+        <span id="emailInputError">Please enter a valid email</span>
+        </div>
+        <div class="password-container">
+        <input id="passwordInput" class="text-input" type="password" placeholder="Password">
+        <br>
+        <span id="passwordInputError">Password must be between 6-16 charachters and contain one number and special charachter</span>
+        <br>
+        <input id="password-checkbox" type="checkbox">
+        <label id="password-label" for="checkbox">Show Password</label>
+        </div>
+
+        <button id="signBtn">SIGN IN</button>
+
+
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

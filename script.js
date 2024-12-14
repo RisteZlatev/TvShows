@@ -36,7 +36,11 @@ getShows().then((shows) => {
 });
 
 
-
+const userName = localStorage.getItem('name');
+const header = document.getElementById('head');
+const greeting = document.createElement('h2');
+greeting.innerHTML = `Hello ${userName}, here are the top 250 shows of all time!`;
+header.appendChild(greeting)
 
 
 function populateShows(shows) {
@@ -52,6 +56,7 @@ function populateShows(shows) {
     `;
   } else {
     noResultsContainer.innerHTML = "";
+    
     shows.forEach((show) => {
       showsContainer.innerHTML += `
       <div class="show" id="${show.id}">
@@ -71,6 +76,7 @@ function populateShows(shows) {
           }" target="_blank">Learn More</a></div></div>
       </div>
           `;
+          
     });
   }
 }
@@ -177,3 +183,9 @@ function populateEpisodes(episodes,showName){
       `
   })
 }
+
+
+showsContainer.addEventListener('click', (ev)=>{
+  const showElement = ev.target.closest('.show');
+  window.location.href = `show.html?id=${showElement.id}`
+});
