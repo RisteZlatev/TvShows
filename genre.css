@@ -1,0 +1,178 @@
+body {
+    background-color: #1a1a1a;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 10px;
+  }
+  
+
+  
+#header {
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 50px;
+    font-size: 50px;
+  }
+
+  #show-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    
+  }
+  .show {
+    width: 200px;
+    border-top-right-radius: 20px;
+    position: relative;
+    background-color: rgb(43, 43, 43);
+    width: fit-content;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: white;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    transition: 0.2s;
+  }
+  .show:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+  }
+  
+  
+  .show .show-img {
+    border-top-right-radius: 20px;
+  }
+  
+  
+  .fa-bookmark {
+    color: orange;
+    opacity: 0.5;
+    font-size: 32px;
+    position: absolute;
+  }
+  
+  
+  .fa-bookmark:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  
+  .fa-star {
+    color: gold;
+  }
+  
+  
+  .fa-star:hover {
+    transform: scale(1.08);
+    transform: rotate(15deg);
+    transition: 0.3s;
+  }
+  
+  
+  .show-data {
+    padding: 0px 12px;
+  }
+  
+  
+  .genres {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  
+  .genre {
+    padding: 5px 25px;
+    height: fit-content;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: #464646;
+    text-align: center;
+    box-shadow: 2px 2px 2px gray;
+  }
+  
+  
+  .show .links {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  }
+  .show .links a{
+    text-decoration: none;
+    color: lightblue;
+  }
+  .button-59 {
+    position: absolute;
+    right: 5px;
+    margin-top: 13px;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-flex;
+    fill: #000;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 48px;
+    justify-content: center;
+    letter-spacing: -.8px;
+    line-height: 24px;
+    min-width: 140px;
+    outline: 0;
+    padding: 0 17px;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-59:focus {
+    color: #171e29;
+  }
+  
+  .button-59:hover {
+    border-color: #06f;
+    color: #06f;
+    fill: #06f;
+  }
+  
+  .button-59:active {
+    border-color: #06f;
+    color: #06f;
+    fill: #06f;
+  }
+  
+  @media (min-width: 768px) {
+    .button-59 {
+      min-width: 170px;
+    }
+  }
+  
+@media only screen and (max-width: 1200px) {
+    #shows {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  @media only screen and (max-width: 992px) {
+    #shows {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    #shows {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  
+  @media only screen and (max-width: 600px) {
+    #shows {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  

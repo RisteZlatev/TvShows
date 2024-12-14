@@ -87,7 +87,7 @@ function populateShow(show) {
         <img src="${show.image.original}" width="350" />
        </div>
        <div class="show-right">
-            <div class="genres">
+            <div id="genres">
             ${show.genres
               .map((genre) => `<span class="genre">${genre}</span>`)
               .join("")}
@@ -103,7 +103,15 @@ function populateShow(show) {
 
 
   showContainer.appendChild(showDivElement);
+  const genres = document.getElementById('genres');
+
+  genres.addEventListener('click', (ev)=>{
+    const genre = ev.target.closest('.genre')
+    window.location.href = `genre.html?genre=${genre.innerText}`;
+  })
 }
+
+
 
 
 function populateEpisodes(episodes) {
@@ -141,3 +149,8 @@ function populateEpisodes(episodes) {
     episodeContainer.appendChild(episodeDivElement);
   });
 }
+
+const back = document.getElementById('back');
+back.addEventListener('click', ()=>{
+  window.location.href = "index.html";
+})
