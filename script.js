@@ -183,7 +183,10 @@ searchInput.addEventListener("keydown", debounce(getData, 500));
 //       `
 //   })
 // }
-
+const logOut = document.getElementById('logOutBtn');
+logOut.addEventListener('click', ()=>{
+  window.location.href = 'login.html';
+})
 
 showsContainer.addEventListener('click', (ev)=>{
   const showElement = ev.target.closest('.show');

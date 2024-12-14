@@ -36,8 +36,6 @@ function populateCast(cast) {
     <div class="person">
         <h3>${cast.person.name}</h3>
         <img src="${cast.person.image.medium}" alt=""> 
-        <p>${cast.person.gender}</p>
-        <p>${cast.person.country?.name}</p>
     </div>
     <div class="character">
         <h3>${cast.character.name}</h3>

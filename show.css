@@ -2,13 +2,20 @@
   display: flex;
   flex-direction: row;
 }
-
+body {
+  background-color: rgb(43, 43, 43);
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 .show-right {
   padding: 0px 20px;
   font-size: 24px;
 }
-
+.show-right a{
+  text-decoration: none;
+  color: lightblue;
+}
 
 .genres {
   display: flex;
@@ -22,7 +29,7 @@
   height: fit-content;
   font-size: 16px;
   border-radius: 25px;
-  background-color: #2b2b2b;
+  background-color: rgb(112, 112, 112);
   text-align: center;
   box-shadow: 2px 2px 2px gray;
   color: white;
@@ -37,12 +44,13 @@
 
 
 .season-btn.selected {
-  background-color: darkblue;
+  background-color: rgb(46, 46, 46);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 
 .season-btn {
-  background-color: #2b2b2b;
+  background-color: rgb(112, 112, 112);
   height: 50px;
   color: white;
   padding: 7px 10px;
