@@ -1,52 +1,163 @@
 const id = new URLSearchParams(window.location.search).get("id");
 
+
 async function getShowData(id) {
-    const response = await fetch(`https://api.tvmaze.com/shows/${id}`);
-    const data = await response.json();
-    return data;
+  const response = await fetch(`https://api.tvmaze.com/shows/${id}`);
+  const show = await response.json();
+  return show;
 }
 
-async function getEpisodes(id){
-    const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
-    const episodes = await response.json();
-    return episodes;
+
+async function getEpisodesForShow(id) {
+  const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
+  const episodes = await response.json();
+  return episodes;
 }
 
-// getEpisodes(id).then(episodes => {
-//     populateEpisodes(episodes);
-// })
 
-getShowData(id).then(data => {
-    populateShow(data);
-})
+getEpisodesForShow(id).then((episodes) => {
+  populateSeasonFilters(episodes);
+  populateEpisodes(episodes);
+});
 
-function populateShow(data){
-    const showContainer = document.getElementById('show');
-    const showTitle = document.getElementById('show-title');
-    showTitle.innerText = data.name;
 
-    const showDivElement = document.createElement("div");
+getShowData(id).then((show) => {
+  populateShow(show);
+});
+
+
+var selectedIndex = 0;
+
+
+function populateSeasonFilters(episodes) {
+  const numberOfSeasons = episodes[episodes.length - 1].season;
+  console.log(numberOfSeasons);
+  const seasonsArray = Array(numberOfSeasons)
+    .fill()
+    .map((_, index) => index + 1);
+
+
+  const filterSeasonsContainer = document.getElementById("filter-seasons");
+
+
+  seasonsArray.forEach((season, index) => {
+    const seasonButton = document.createElement("div");
+    seasonButton.classList.add("season-btn");
+    seasonButton.innerHTML = `Season ${season}`;
+
+
+    seasonButton.addEventListener("click", () => {
+      const filteredEpisodes = episodes.filter(
+        (episode) => episode.season == season
+      );
+
+
+      seasonButton.classList.add("selected");
+      if (selectedIndex != index) {
+        allSeasonButtons[selectedIndex].classList.remove("selected");
+        selectedIndex = index;
+      }
+
+
+      populateEpisodes(filteredEpisodes);
+    });
+
+
+    filterSeasonsContainer.appendChild(seasonButton);
+  });
+
+
+  const allSeasonButtons = Array.from(
+    document.getElementsByClassName("season-btn")
+  );
+  console.log(allSeasonButtons);
+}
+
+
+function populateShow(show) {
+  const showContainer = document.getElementById("show");
+  const showTitle = document.getElementById("show-title");
+  showTitle.innerText = show.name;
+
+
+  const showDivElement = document.createElement("div");
   showDivElement.classList.add("show");
   showDivElement.innerHTML = `
        <div class="show-left">
-        <img src="${data.image.original}" width="350" />
+        <img src="${show.image.original}" width="350" />
        </div>
        <div class="show-right">
             <div class="genres">
-            ${data.genres
+            ${show.genres
               .map((genre) => `<span class="genre">${genre}</span>`)
               .join("")}
             </div>
-            ${data.summary}
-            <p>Premiered: ${data.premiered}</p>
-            <p>Ended: ${data.ended}</p>
+            ${show.summary}
+            <p>Premiered: ${show.premiered}</p>
+            <p>Ended: ${show.ended}</p>
 
 
-            <a href="cast.html?id=${data.id}&name=${data.name}">View Cast</a>
+            <a href="cast.html?id=${show.id}&name=${show.name}">View Cast</a>
        </div>
     `;
 
 
-  showContainer.appendChild(showDivElement);
+    const addTofavoritesButton = document.createElement("div")
+    addTofavoritesButton.innerHTML = "Add to favorites"
+    addTofavoritesButton.addEventListener("click", () => {
+      var favorites = localStorage.getItem("favorite-show-id");
+      var newFavorites
+      if(favorites == null || favorites == undefined) {
+        const newFavorites = [show.id]  
+      } else {
+        const newFavorites = [...JSON.parse(favorites), show.id]
+      }
+      console.log(favorites);
+      console.log(newFavorites);
+      
+      localStorage.setItem("favorite-show-id", JSON.stringify(newFavorites))
+    })
 
+
+    showDivElement.appendChild(addTofavoritesButton)
+
+
+  showContainer.appendChild(showDivElement);
+}
+
+
+function populateEpisodes(episodes) {
+  const episodeContainer = document.getElementById("episodes");
+
+
+  episodeContainer.innerHTML = "";
+  episodeContainer.innerHTML += `<h1>Episodes: ${episodes.length}</h1>`;
+  episodes.forEach((episode) => {
+    const episodeDivElement = document.createElement("div");
+    episodeDivElement.classList.add("episode");
+    episodeDivElement.innerHTML = `
+        <div class="episode-img">
+            <img src="${episode.image.medium}" />
+        </div>
+        <div class="episode-data">
+            <div class="episode-title-div">
+                <h3>${episode.name}</h3>
+                <span>${episode.airdate}</span>
+            </div>
+            ${episode.summary}
+            <div class="episode-rate">
+                <span><i class="fa fa-star" style="color: gold"></i> ${episode.rating.average}</span>
+                <button><i class="fa fa-star" style="color: blue"></i> Rate</button>
+            </div>
+        </div>
+      `;
+
+
+    episodeDivElement.addEventListener("click", () => {
+      console.log(episode.id);
+    });
+
+
+    episodeContainer.appendChild(episodeDivElement);
+  });
 }
