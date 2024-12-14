@@ -12,7 +12,7 @@ h1 {
   gap: 30px;
 }
 
-#description{
+/* #description{
   max-height: 80vh;  
   overflow-y: auto;
   width: 500px;
@@ -26,7 +26,7 @@ h1 {
 
 .episode{
   border-bottom: 2px solid white;
-}
+} */
 
 #shows {
   display: grid;

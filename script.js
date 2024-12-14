@@ -147,42 +147,42 @@ searchInput.addEventListener("keydown", debounce(getData, 500));
 
 //Description and episodes when clicking on a show:
 
-const desc = document.getElementById('description');
+// const desc = document.getElementById('description');
 
-showsContainer.addEventListener('click', (ev)=>{
-    const showElement = ev.target.closest('.show');
+// showsContainer.addEventListener('click', (ev)=>{
+//     const showElement = ev.target.closest('.show');
     
-    desc.innerHTML = "";
-    if(showElement){
-      const showId = showElement.id;
-      const showName = showElement.querySelector('#showName')
-      desc.style.display = 'block';
-      desc.innerHTML = `
-          <h1>${showName.innerText}</h1>
-      `
-      getEpisodes(showId).then((episodes) => {
-        populateEpisodes(episodes);
-      })
+//     desc.innerHTML = "";
+//     if(showElement){
+//       const showId = showElement.id;
+//       const showName = showElement.querySelector('#showName')
+//       desc.style.display = 'block';
+//       desc.innerHTML = `
+//           <h1>${showName.innerText}</h1>
+//       `
+//       getEpisodes(showId).then((episodes) => {
+//         populateEpisodes(episodes);
+//       })
 
-    }
-} );
+//     }
+// } );
 
-async function getEpisodes(id){
-    const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
-    const episodes = await response.json();
-    return episodes;
-}
+// async function getEpisodes(id){
+//     const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
+//     const episodes = await response.json();
+//     return episodes;
+// }
 
-function populateEpisodes(episodes,showName){
-  episodes.forEach(episode =>{
-      desc.innerHTML += `
-          <div class="episode">
-            <h2>S${episode.season}.E${episode.number} &#x2022; ${episode.name}</h2>
-            <p>${episode.summary}</p>
-          </div>
-      `
-  })
-}
+// function populateEpisodes(episodes,showName){
+//   episodes.forEach(episode =>{
+//       desc.innerHTML += `
+//           <div class="episode">
+//             <h2>S${episode.season}.E${episode.number} &#x2022; ${episode.name}</h2>
+//             <p>${episode.summary}</p>
+//           </div>
+//       `
+//   })
+// }
 
 
 showsContainer.addEventListener('click', (ev)=>{
