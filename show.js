@@ -102,26 +102,6 @@ function populateShow(show) {
     `;
 
 
-    const addTofavoritesButton = document.createElement("div")
-    addTofavoritesButton.innerHTML = "Add to favorites"
-    addTofavoritesButton.addEventListener("click", () => {
-      var favorites = localStorage.getItem("favorite-show-id");
-      var newFavorites
-      if(favorites == null || favorites == undefined) {
-        const newFavorites = [show.id]  
-      } else {
-        const newFavorites = [...JSON.parse(favorites), show.id]
-      }
-      console.log(favorites);
-      console.log(newFavorites);
-      
-      localStorage.setItem("favorite-show-id", JSON.stringify(newFavorites))
-    })
-
-
-    showDivElement.appendChild(addTofavoritesButton)
-
-
   showContainer.appendChild(showDivElement);
 }
 
